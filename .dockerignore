@@ -1,0 +1,27 @@
+# Project/.dockerignore
+
+.git
+
+__pycache__
+*.pyc
+
+.pytest_cache
+
+.venv
+venv
+env
+
+notebooks
+
+reports
+
+mlruns
+
+data/interim
+data/processed
+
+tests
+
+docs
+
+*.ipynb

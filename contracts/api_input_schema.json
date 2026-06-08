@@ -1,0 +1,9 @@
+{
+  "Pclass": "int",
+  "Sex": "string",
+  "Age": "float",
+  "SibSp": "int",
+  "Parch": "int",
+  "Fare": "float",
+  "Embarked": "string"
+}

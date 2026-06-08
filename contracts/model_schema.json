@@ -1,0 +1,6 @@
+{
+  "primary_metric": "roc_auc",
+  "optimization_metric": "f1",
+  "minimum_improvement": 0.01,
+  "supported_models": ["lr" , "rf" , "xgb"]
+}

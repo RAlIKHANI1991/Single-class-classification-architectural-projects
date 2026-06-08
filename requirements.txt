@@ -1,0 +1,12 @@
+
+pandas
+numpy
+scikit-learn
+
+fastapi
+uvicorn
+
+mlflow
+joblib
+psycopg2-binary
+pytest

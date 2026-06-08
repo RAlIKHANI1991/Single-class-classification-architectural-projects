@@ -1,0 +1,17 @@
+مزیت:
+
+Champion
+    ↓
+مدل فعلی Production
+
+Challenger
+    ↓
+مدل جدید کاندید
+
+بعداً در:
+
+A/B Testing
+Model Monitoring
+Continuous Training
+
+استفاده می‌شود.

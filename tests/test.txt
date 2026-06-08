@@ -1,0 +1,12 @@
+اجرای تست‌ها
+pytest
+
+یا
+
+pytest -v
+
+یا
+
+pytest --cov=src
+
+---------------------in Bash env

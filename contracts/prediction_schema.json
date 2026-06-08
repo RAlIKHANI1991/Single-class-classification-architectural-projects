@@ -1,0 +1,6 @@
+{
+  "prediction": "int",
+  "probability": "float",
+  "model_version": "string",
+  "timestamp": "datetime"
+}

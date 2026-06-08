@@ -1,0 +1,308 @@
+docker build -t titanic-api .
+
+_Project/
+
+├── config/
+│    ├── constants.py
+│    ├── params.py
+│    ├── paths.py
+│    ├── logging_config.py
+│    └── mlflow_config.py
+│
+├── data/
+│    ├── raw/  titanic.csv
+│    ├── interim/
+│    ├── processed/
+│    └── external/
+│
+├── artifacts/
+│        ├── model/
+│        │       ├── champion/
+│        │       │     ├── metadata.json
+│        │       │     └── pipeline.pkl
+│        │       │
+│        │       ├── challenger/
+│        │       │     ├── metadata.json
+│        │       │     └── pipeline.pkl
+│        │       │
+│        │       └── archive/
+│        │            ├── v1/
+│        │            └── v2/
+│        │ 
+│        ├── calibration/
+│        │        └── calibrator.pkl
+│        │ 
+│        ├── threshold/
+│        │        ├── threshold.json
+│        │        └── prediction_logs.csv
+│        │  
+│        ├── metrics/
+│        │        ├── model_metrics.json
+│        │        └── leaderboard.csv
+│        │  
+│        ├── figures/
+│        ├── reports/
+│        ├── cv_results
+│        │        └── grid_search_results.csv
+│        │  
+│        └── predictions/
+│                ├── batch_predictions.csv
+│                └── prediction_logs.csv
+│
+├── reports/
+│        ├── html/
+│        ├── pdf/
+│        └── figures/
+│
+├── docs/
+│    ├── architecture.md
+│    ├── pipeline.md
+│    ├── mlflow.md
+│    ├── deployment.md
+│    └── api.md
+│
+├── notebooks/
+│       ├── 01_eda.ipynb
+│       └── 02_feature_engineering.ipynb
+│
+├── tests/
+│       ├── test_features.py
+│       ├── test_pipeline.py
+│       ├── test_model.py
+│       ├── test_validation.py
+│       ├── conftest.py
+│       ├── test_registry.py
+│       └── test_api.py
+│
+├── _contracts/
+│    ├── data_schema.json
+│    ├── feature_schema.json
+│    ├── api_input_schema.json
+│    ├── api_output_schema.json
+│    ├── model_schema.json
+│    ├── monitoring_schema.json
+│    └── prediction_schema.json
+│
+│
+├── src/
+│   │
+│   ├── ingestion/
+│   │
+│   ├── validation/
+│   │     ├── schema_validator.py
+│   │     ├── data_validator.py
+│   │     └── feature_validator.py
+│   │
+│   ├── features/
+│   │     ├── family_size.py
+│   │     ├── title_extractor.py
+│   │     ├── feature_builder.py
+│   │     ├── base_transformer.py
+│   │     └── feature_selector.py
+│   │
+│   ├── pipelines/
+│   │     ├── preprocessing.py
+│   │     ├── feature_pipeline.py
+│   │     ├── model_pipeline.py
+│   │     └── inference_pipeline.py
+│   │
+│   ├── models/
+│   │     ├── trainer.py
+│   │     ├── predictor.py
+│   │     ├── calibrator.py
+│   │     └── threshold_optimizer.py
+│   │
+│   ├── evaluation/
+│   │     ├── evaluator.py
+│   │     ├── metrics.py
+│   │     ├── model_selector.py
+│   │     └── visualization.py
+│   │
+│   ├── registry/
+│   │     ├── model_registry.py
+│   │     ├── version_manager.py
+│   │     ├── model_comparator.py
+│   │     └── artifact_manager.py
+│   │
+│   ├── experiments/
+│   │     ├── tracking.py
+│   │     └── logger.py
+│   │
+│   ├── monitoring/
+│   │     ├── data_drift.py
+│   │     ├── prediction_drift.py
+│   │     └── model_monitor.py
+│   │
+│   ├── deployment/
+│   │     ├── api.py
+│   │     ├── schemas.py
+│   │     ├── service.py
+│   │     └── dependencies.py
+│   │
+│   ├── utils/
+│   │     ├── io.py
+│   │     ├── logger.py
+│   │     ├── helpers.py
+│   │     ├── seed.py
+│   │     ├── feature_detector.py
+│   │     ├── schema_loader.py
+│   │     └── timer.py
+│   │
+│   └── exceptions/
+│        ├── custom_exceptions.py
+│        └── handlers.py
+│
+│
+├── workflows/
+│        ├── training_workflow.py
+│        ├── evaluation_workflow.py
+│        ├── tracking_workflow.py
+│        ├── registry_workflow.py
+│        ├── pipeline_workflow.py
+│        └── deployment_workflow.py
+│
+├── mlruns/
+│
+├── registry/ ################################## remove in futuer
+│    ├── champion/pipeline.pkl
+│    ├── champion/metadata.json
+│    └── model_registry.json
+│
+├── api/
+│   ├── routes/
+│   │    ├── prediction.py
+│   │    ├── #health.py
+│   │    └── #train.py
+│   │
+│   ├── schemas/
+│   │    ├── request.py
+│   │    └── response.py
+│   │
+│   ├── app.py
+│   └── dependencies.py
+│
+│
+├── services/
+│   ├── prediction_service.py
+│   ├── training_service.py
+│   └── model_service.py
+│
+├── inference/
+│   ├── predictor.py
+│   └── model_loader.py
+│
+├── logs/
+│   └── api.log
+│
+├── docker/
+│   ├── postgres/
+│   ├── mlflow/
+│   └── api/
+│
+│
+├── ################################models/ remove in futuer
+│    └── model.pkl
+│
+├── ############################main.py remove in futuer
+│
+│
+├── .dockerignore
+├── docker-compose.yml
+├── .env      
+├── mlflow.db     
+├── .gitignore ################### 
+├── pytest.ini
+├── requirements.txt
+└── README.md
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+لایه‌های معماری
+Layer	                            هدف
+
+Config Layer	         تنظیمات پروژه
+Data Layer	               مدیریت داده
+Validation Layer	  کنترل کیفیت داده
+Feature Layer	          مهندسی ویژگی
+Pipeline Layer	          ساخت Pipeline
+Model Layer	                  آموزش مدل
+Evaluation Layer	        ارزیابی مدل
+Experiment Layer	             MLflow
+Registry Layer	       مدیریت نسخه مدل
+Monitoring Layer	          پایش مدل
+Deployment Layer	       API و سرویس
+Workflow Layer	           ارکستراسیون
+
+-----------------------------------------------------------------------------
+چک‌لیست فعلی
+Training Workflow	      ✅
+Evaluation Workflow	✅
+MLflow Tracking	      ✅
+Registry Workflow	      ✅
+Artifact Manager	      ✅
+Champion Save	      ✅
+Champion Load	      ✅
+Inference Test	      ✅
+Prediction Service	✅
+FastAPI	            ⏳
+
+وضعیت فعلی پروژه
+Training Workflow          ✅
+Evaluation Workflow        ✅
+MLflow Tracking            ✅
+Registry Workflow          ✅
+Artifact Manager           ✅
+Champion Save              ✅
+Champion Load              ✅
+
+Inference Layer            ✅
+Prediction Service         ✅
+
+FastAPI                    ✅
+API Route                  ✅
+API Integration Test       ✅
+-----------------------------------------------------------------------------
+جریان پروژه 
+
+dataset CSV
+      ↓
+Schema Validator
+      ↓
+Data Validator
+      ↓
+Feature Pipeline
+      ↓
+Preprocessor
+      ↓
+Model Pipeline
+      ↓
+Grid Search
+      ↓
+Best Model
+      ↓
+Evaluation
+      ↓
+MLflow
+      ↓
+Registry
+      ↓
+Inference Pipeline
+      ↓
+FastAPI
+
+------------------------------------------------------------
+Data
+ ↓
+TrainingWorkflow
+ ↓
+GridSearch
+ ↓
+Evaluation
+ ↓
+RegistryWorkflow
+ ↓
+Champion Pipeline Save
+ ↓
+Inference
+ ↓
+API

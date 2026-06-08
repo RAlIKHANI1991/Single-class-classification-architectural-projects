@@ -1,0 +1,26 @@
+{
+  "target": "Survived",
+
+  "id_columns": [
+    "PassengerId"
+  ],
+
+  "numeric_features": [
+    "Age",
+    "Fare",
+    "SibSp",
+    "Parch"
+  ],
+
+  "categorical_features": [
+    "Sex",
+    "Embarked",
+    "Pclass",
+    "Title"
+  ],
+
+  "engineered_features": [
+    "FamilySize",
+    "Title"
+  ]
+}

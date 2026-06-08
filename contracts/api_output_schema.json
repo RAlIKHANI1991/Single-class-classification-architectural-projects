@@ -1,0 +1,6 @@
+{
+  "prediction": "int",
+  "probability": "float",
+  "model_name": "string",
+  "model_version": "string"
+}
