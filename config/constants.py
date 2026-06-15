@@ -1,10 +1,6 @@
 # config/constants.py
 
-"""
-ثابت‌های پروژه
-مواردی که به ندرت تغییر می‌کنند.
-"""
-
+# Dataset
 TARGET        = "Survived"
 RANDOM_STATE  = 42
 PROJECT_NAME  = "Titanic_Project"
@@ -18,3 +14,9 @@ SUPPORTED_MODELS = {
     "rf":"RandomForest",
     "xgb":"XGBoost"
 }
+
+
+"""
+ثابت‌های پروژه
+مواردی که به ندرت تغییر می‌کنند.
+"""

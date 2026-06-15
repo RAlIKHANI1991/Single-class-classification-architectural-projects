@@ -1,0 +1,56 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mlflow:
+    build:
+      context: .
+      dockerfile: docker/mlflow/Dockerfile
+    container_name: mlflow
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    ports:
+      - "5000:5000"
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri postgresql://mlflow:mlflow123@postgres:5432/mlflow_db
+      --default-artifact-root /mlflow/artifacts
+    volumes:
+      - mlflow_artifacts:/mlflow/artifacts
+
+  api:
+    build: .
+    container_name: titanic-api
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - mlflow
+    ports:
+      - "8000:8000"
+    command: >
+      uvicorn api.app:app
+      --host 0.0.0.0
+      --port 8000
+    volumes:
+      - .:/app
+
+volumes:
+  postgres_data:
+  mlflow_artifacts:

@@ -5,8 +5,9 @@ scikit-learn
 
 fastapi
 uvicorn
-
+psycopg2-binary
 mlflow
 joblib
-psycopg2-binary
 pytest
+
+pydantic

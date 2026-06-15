@@ -1,10 +1,46 @@
 docker build -t titanic-api .
+-----------------------------------------------------------------------------
+setting / docker engine
+{
+  "builder": {
+    "gc": {
+      "defaultKeepStorage": "20GB",
+      "enabled": true
+    }
+  },
+  "experimental": false
+}
+
+
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.1.0
+    container_name: mlflow
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    ports:
+      - "5000:5000"
+
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      --default-artifact-root /mlflow/artifacts
+
+    volumes:
+      - mlflow_artifacts:/mlflow/artifacts
+
+-----------------------------------------------------------------------------------
 
 _Project/
 
 ├── config/
 │    ├── constants.py
-│    ├── params.py
+│    ├── params.py 
 │    ├── paths.py
 │    ├── logging_config.py
 │    └── mlflow_config.py
@@ -197,16 +233,19 @@ _Project/
 ├── docker/
 │   ├── postgres/
 │   ├── mlflow/
+│   │       ├── Dockerfile
+│   │       └── start_mlflow.sh
 │   └── api/
 │
 │
-├── ################################models/ remove in futuer
+├── ################################models/ remove in futuer   
 │    └── model.pkl
 │
 ├── ############################main.py remove in futuer
 │
 │
 ├── .dockerignore
+├── Dockerfile
 ├── docker-compose.yml
 ├── .env      
 ├── mlflow.db     
@@ -306,3 +345,111 @@ Champion Pipeline Save
 Inference
  ↓
 API
+
+
+-------------------------------------------------------------------------
+                      ┌─────────────────┐
+                      │     Browser     │
+                      │ localhost:8000  │
+                      │ localhost:5000  │
+                      └────────┬────────┘
+                               │
+                 ┌─────────────┴─────────────┐
+                 │                           │
+
+                 ▼                           ▼
+
+       ┌─────────────────┐       ┌─────────────────┐
+       │     FastAPI     │       │     MLflow      │
+       │  Port: 8000     │       │  Port: 5000     │
+       └────────┬────────┘       └────────┬────────┘
+                │                         │
+                │                         │
+                │                         ▼
+                │              ┌─────────────────┐
+                │              │   PostgreSQL    │
+                │              │   Port: 5432    │
+                │              └─────────────────┘
+                │
+                ▼
+
+       ┌─────────────────┐
+       │ Champion Model  │
+       │ pipeline.pkl    │
+       └─────────────────┘
+-------------------------------------------------------------------------
+Phase 1
+Project Structure
+      ✔
+
+Phase 2
+Pipeline
+      ✔
+
+Phase 3
+Model Training
+      ✔
+
+Phase 4
+Registry Local
+      ✔
+
+Phase 5
+FastAPI
+      ✔
+
+Phase 6
+Docker
+      ✔
+
+Phase 7
+PostgreSQL
+      ✔
+
+Phase 8
+MLflow Tracking Server
+      ✔
+
+Phase 9
+MLflow Registry
+      ← مرحله بعد
+
+Phase 10
+Champion Deployment
+
+Phase 11
+Monitoring
+
+Phase 12
+CI/CD
+
+
+-------------------------------------------------------------------------
+
+                             User
+                        │
+                        ▼
+                ┌──────────────┐
+                │   FastAPI    │
+                └──────┬───────┘
+                       │
+                       ▼
+                ┌──────────────┐
+                │ Champion ML  │
+                └──────────────┘
+
+
+                       ▲
+                       │
+
+                ┌──────────────┐
+                │    MLflow    │
+                │ Experiments  │
+                │ Registry     │
+                └──────┬───────┘
+                       │
+                       ▼
+
+                ┌──────────────┐
+                │ PostgreSQL   │
+                └──────────────┘

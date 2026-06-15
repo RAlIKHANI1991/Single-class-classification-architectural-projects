@@ -1,8 +1,8 @@
 # config/params.py
 
 TEST_SIZE = 0.2
-CV = 5
-SCORING = "accuracy"
+CV        = 5
+SCORING   = "accuracy"
 
 # ==================================================
 # MODELS CONFIG
@@ -37,8 +37,8 @@ MODEL_CONFIGS = {
 # ==================================================
 # MODEL SELECTION
 # ==================================================
-PRIMARY_METRIC = "roc_auc"
-OPTIMIZATION_METRIC = "f1"
+PRIMARY_METRIC       = "roc_auc"
+OPTIMIZATION_METRIC  = "f1"
 
 # ==================================================
 # EXPERIMENT

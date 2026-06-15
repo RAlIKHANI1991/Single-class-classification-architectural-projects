@@ -17,3 +17,42 @@
 2026-06-07 16:15:38,130 | INFO | prediction_service | Champion model loaded
 2026-06-07 16:15:38,130 | INFO | prediction_service | Prediction request received
 2026-06-07 16:15:38,165 | INFO | prediction_service | Prediction=0 Probability=0.9845
+2026-06-08 14:51:57,542 | INFO | api | API started
+2026-06-08 16:10:15,249 | INFO | api | API stopped
+2026-06-08 16:18:14,576 | INFO | api | API started
+2026-06-08 16:23:07,216 | INFO | api | API stopped
+2026-06-08 16:29:06,110 | INFO | api | API started
+2026-06-08 16:31:28,055 | INFO | api | API stopped
+2026-06-08 16:31:56,202 | INFO | api | API started
+2026-06-08 16:33:16,315 | INFO | api | API stopped
+2026-06-08 17:48:55,830 | INFO | api | API started
+2026-06-08 18:01:31,063 | INFO | prediction_service | Champion model loaded
+2026-06-08 18:01:31,067 | INFO | prediction_service | Prediction request received
+2026-06-08 18:01:31,078 | ERROR | prediction_service | Prediction failed
+Traceback (most recent call last):
+  File "/app/services/prediction_service.py", line 29, in predict
+    prediction = (self.pipeline.predict(data))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sklearn/pipeline.py", line 796, in predict
+    Xt = transform.transform(Xt)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sklearn/pipeline.py", line 1102, in transform
+    check_is_fitted(self)
+  File "/usr/local/lib/python3.12/site-packages/sklearn/utils/validation.py", line 1718, in check_is_fitted
+    raise NotFittedError(msg % {"name": type(estimator).__name__})
+sklearn.exceptions.NotFittedError: This Pipeline instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
+2026-06-08 18:01:33,465 | INFO | prediction_service | Champion model loaded
+2026-06-08 18:01:33,467 | INFO | prediction_service | Prediction request received
+2026-06-08 18:01:33,471 | ERROR | prediction_service | Prediction failed
+Traceback (most recent call last):
+  File "/app/services/prediction_service.py", line 29, in predict
+    prediction = (self.pipeline.predict(data))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sklearn/pipeline.py", line 796, in predict
+    Xt = transform.transform(Xt)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/sklearn/pipeline.py", line 1102, in transform
+    check_is_fitted(self)
+  File "/usr/local/lib/python3.12/site-packages/sklearn/utils/validation.py", line 1718, in check_is_fitted
+    raise NotFittedError(msg % {"name": type(estimator).__name__})
+sklearn.exceptions.NotFittedError: This Pipeline instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
